@@ -1,4 +1,4 @@
-/**
+/*
  * MIT License
  * <p>
  * Copyright (c) 2021 kokodyn
@@ -21,7 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.jantarcode.puzzles.common;
+package com.jantarcode.puzzles.reactor.from_stream;
 
-public interface MonoTask<T> extends MonoSupplier<T> {
+import com.jantarcode.puzzles.common.FluxTask;
+import reactor.core.publisher.Flux;
+
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+/**
+ * Stream can not be reused.
+ * For details please look at {@link Flux#fromStream(Stream)}
+ */
+class FromStreamSolution implements FluxTask<String> {
+    @Override
+    public Flux<String> get() {
+        return Flux.fromIterable(Stream.of("a", "b", "c").collect(Collectors.toSet()));
+    }
 }

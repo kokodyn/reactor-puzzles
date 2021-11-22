@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
-package com.jantarcode.puzzles.common;
+package com.jantarcode.puzzles.annotations;
 
 import org.junit.jupiter.api.Tag;
 
@@ -32,7 +32,7 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@Tag("task")
-public @interface Task {
+@Tag("solution")
+public @interface Solution {
 
 }

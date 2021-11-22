@@ -21,7 +21,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.jantarcode.puzzles.common;
+package com.jantarcode.puzzles.reactor.from_stream;
 
-public interface MonoTask<T> extends MonoSupplier<T> {
+import com.jantarcode.puzzles.common.FluxTask;
+import reactor.core.publisher.Flux;
+
+import java.util.stream.Stream;
+
+class FromStreamTask implements FluxTask<String> {
+    @Override
+    public Flux<String> get() {
+        return Flux.fromStream(Stream.of("a", "b", "c"));
+    }
 }

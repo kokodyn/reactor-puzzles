@@ -23,5 +23,5 @@
  */
 package com.jantarcode.puzzles.common;
 
-public interface MonoTask<T> extends MonoSupplier<T> {
+public interface FluxTask<T> extends FluxSupplier<T>{
 }

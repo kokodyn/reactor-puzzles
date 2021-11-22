@@ -23,5 +23,9 @@
  */
 package com.jantarcode.puzzles.common;
 
-public interface MonoTask<T> extends MonoSupplier<T> {
+import reactor.core.publisher.Flux;
+
+import java.util.function.Supplier;
+
+public interface FluxSupplier<T> extends Supplier<Flux<T>> {
 }

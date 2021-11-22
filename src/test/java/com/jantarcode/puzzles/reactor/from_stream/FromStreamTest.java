@@ -21,7 +21,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.jantarcode.puzzles.common;
+package com.jantarcode.puzzles.reactor.from_stream;
 
-public interface MonoTask<T> extends MonoSupplier<T> {
+import com.jantarcode.puzzles.annotations.Solution;
+import com.jantarcode.puzzles.annotations.Task;
+import com.jantarcode.puzzles.common.FluxSupplier;
+import org.junit.jupiter.api.Test;
+import reactor.test.StepVerifier;
+
+class FromStreamTest {
+    @Test
+    @Task
+    void task() {
+        test(new FromStreamTask());
+    }
+
+    @Test
+    @Solution
+    void solution() {
+        test(new FromStreamSolution());
+    }
+
+    private <T extends FluxSupplier<String>> void test(T supplier) {
+        StepVerifier.create(supplier.get().repeat(1)).expectNext("a", "b", "c", "a", "b", "c").verifyComplete();
+    }
+
 }

@@ -24,7 +24,7 @@ SOFTWARE.
 package com.jantarcode.puzzles.reactor.immutable;
 
 
-import com.jantarcode.puzzles.common.MonoSupplier;
+import com.jantarcode.puzzles.common.MonoSolution;
 import reactor.core.publisher.Mono;
 
 import java.util.function.Function;
@@ -35,7 +35,7 @@ import java.util.function.Function;
  *
  * @see Mono#map(Function)
  */
-public class ImmutableSolution implements MonoSupplier<String> {
+class ImmutableSolution implements MonoSolution<String> {
     @Override
     public Mono<String> get() {
         Mono<String> mono = Mono.just("ABCDE");

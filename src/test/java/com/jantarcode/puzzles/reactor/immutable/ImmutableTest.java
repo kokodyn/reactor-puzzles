@@ -23,26 +23,26 @@ SOFTWARE.
  */
 package com.jantarcode.puzzles.reactor.immutable;
 
+import com.jantarcode.puzzles.annotations.Solution;
+import com.jantarcode.puzzles.annotations.Task;
 import com.jantarcode.puzzles.common.MonoSupplier;
-import com.jantarcode.puzzles.common.Solution;
-import com.jantarcode.puzzles.common.Task;
 import org.junit.jupiter.api.Test;
 import reactor.test.StepVerifier;
 
 class ImmutableTest {
     @Test
     @Solution
-    void test_solution() {
+    void solution() {
         test(new ImmutableSolution());
     }
 
     @Test
     @Task
-    void test_task() {
+    void task() {
         test(new ImmutableTask());
     }
 
-    void test(MonoSupplier<String> publisher) {
+    <T extends MonoSupplier<String>> void test(T publisher) {
         StepVerifier.create(publisher.get()).expectNext("abcde").verifyComplete();
     }
 
