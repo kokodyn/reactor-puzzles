@@ -26,16 +26,16 @@ package com.jantarcode.puzzles.reactor.from_stream;
 import com.jantarcode.puzzles.common.FluxTask;
 import reactor.core.publisher.Flux;
 
-import java.util.stream.Collectors;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /**
  * Stream can not be reused.
- * For details please look at {@link Flux#fromStream(Stream)}
+ * For details please look at {@link Flux#fromStream(Stream)} and {@link Flux#defer(Supplier)}
  */
 class FromStreamSolution implements FluxTask<String> {
     @Override
     public Flux<String> get() {
-        return Flux.fromIterable(Stream.of("a", "b", "c").collect(Collectors.toSet()));
+        return Flux.defer(() -> Flux.fromStream(Stream.of("a", "b", "c")));
     }
 }
